@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "521897899852",
+    "project_id": "medireminderauthentication",
+    "storage_bucket": "medireminderauthentication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521897899852:android:7c2b9744361150f75301e9",
+        "android_client_info": {
+          "package_name": "com.example.untitled3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeKqRcCoaRIg3aQOBVdBkRmLWOq_ustUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
