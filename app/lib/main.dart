@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pageinfo1/constants.dart';
+import 'package:sizer/sizer.dart';
+import 'pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,65 +14,68 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-  
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    return Sizer(builder: (context, orientation, deviceType) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Med Reminder',
+        theme: ThemeData.dark().copyWith(
+          primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: KScaffoldColor,
+          //appbar theme
+          appBarTheme: AppBarTheme(
+              toolbarHeight: 7.h,
+              backgroundColor: KScaffoldColor,
+              elevation: 0,
+              iconTheme: IconThemeData(
+                color: KSecondaryColor,
+                size: 20.sp,
+              ),
+              titleTextStyle: GoogleFonts.mulish(
+                color: KTextColor,
+                fontWeight: FontWeight.w800,
+                fontStyle: FontStyle.normal,
+                fontSize: 16.sp,
+              )),
+          textTheme: TextTheme(
+            headlineMedium: TextStyle(
+              fontSize: 28.sp,
+              color: KSecondaryColor,
+              fontWeight: FontWeight.w400,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            headlineLarge: TextStyle(
+              fontSize: 24.sp,
+              fontWeight: FontWeight.w800,
+              color: KTextColor,
             ),
-          ],
+            headlineSmall:
+                GoogleFonts.poppins(fontSize: 12.sp, color: KTextColor),
+            labelMedium: TextStyle(
+              fontSize: 10.sp,
+              fontWeight: FontWeight.w500,
+              color: KTextColor,
+            ),
+          ),
+          inputDecorationTheme: const InputDecorationTheme(
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: KTextLightColor,
+                  width: 0.7,
+                ),
+              ),
+              border: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: KTextColor,
+                ),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: kPrimaryColor,
+                ),
+              )
+            ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        home: const HomePage(),
+      );
+    });
   }
 }
