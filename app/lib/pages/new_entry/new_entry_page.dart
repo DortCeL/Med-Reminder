@@ -4,6 +4,8 @@ import 'package:pageinfo1/constants.dart';
 import 'package:pageinfo1/models/medicine_type.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../common/convert_time.dart';
+
 class NewEntryPage extends StatefulWidget {
   const NewEntryPage({super.key});
 
@@ -127,7 +129,91 @@ class _NewEntryPageState extends State<NewEntryPage> {
                 )),
             const PanelTitle(title: 'Interval Selection', isRequired: true),
             const IntervalSelection(),
+            const PanelTitle(title: 'Starting time', isRequired: true),
+            const SelectTime(),
+            SizedBox(
+              height: 2.h,
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: 40.w,
+                right: 8.w,
+              ),
+              child: SizedBox(
+                width: 30.w,
+                height: 10.h,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: kPrimaryColor,
+                    shape: const StadiumBorder(),
+                  ),
+                  child:Center(
+                    child:Text('Confirm',
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        color:KScaffoldColor,
+                    ),),
+                  ),
+                  onPressed: (){
+                    //medicine gula add hobe
+                  },
+                ),
+              ),
+            ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class SelectTime extends StatefulWidget {
+  const SelectTime({super.key});
+
+  @override
+  State<SelectTime> createState() => _SelectTimeState();
+}
+
+class _SelectTimeState extends State<SelectTime> {
+ TimeOfDay _time=const TimeOfDay(hour: 0, minute: 00);
+  bool _clicked=false;
+
+  Future<TimeOfDay> _selectTime()async{
+    final TimeOfDay?picked=await showTimePicker(
+        context: context,
+        initialTime: _time);
+
+    if(picked!=null && picked!=_time)
+      {
+        setState(() {
+          _time=picked;
+          _clicked=true;
+          //update korbe state
+        });
+      }
+    return picked!;
+  }
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 8.h,
+      child: Padding(
+        padding: EdgeInsets.only(top: 2.h),
+        child: TextButton(
+          style: TextButton.styleFrom(
+              backgroundColor: kPrimaryColor, shape: const StadiumBorder()),
+          onPressed: () {
+
+            _selectTime();
+          },
+          child: Center(
+            child: Text(
+              _clicked==false
+              ? "Select Time":
+                 "${convertTime(_time.hour.toString())}:${convertTime(_time.minute.toString())}",
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    color: KScaffoldColor),
+            ),
+          ),
         ),
       ),
     );
@@ -166,7 +252,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                   )
                 : null,
             elevation: 4,
-            value: _selected==0? null:_selected,
+            value: _selected == 0 ? null : _selected,
             items: _intervals.map(
               (int value) {
                 return DropdownMenuItem<int>(
@@ -186,7 +272,8 @@ class _IntervalSelectionState extends State<IntervalSelection> {
               );
             },
           ),
-          Text(_selected==1?"hour":"hours",
+          Text(
+            _selected == 1 ? "hour" : "hours",
             style: Theme.of(context).textTheme.labelMedium,
           ),
         ],

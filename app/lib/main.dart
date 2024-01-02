@@ -73,6 +73,19 @@ class MyApp extends StatelessWidget {
                 ),
               )
             ),
+          timePickerTheme: TimePickerThemeData(
+            backgroundColor: KScaffoldColor,
+            hourMinuteColor: KTextColor,
+            hourMinuteTextColor: KScaffoldColor,
+            dayPeriodColor: KTextColor,
+            dayPeriodTextColor: KScaffoldColor,
+            dialBackgroundColor: KTextColor,
+            dialTextColor: KScaffoldColor,
+            entryModeIconColor: KOtherColor,
+            dayPeriodTextStyle: GoogleFonts.aBeeZee(
+              fontSize: 8.sp,
+            ),
+          ),
         ),
         home: const HomePage(),
       );
