@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:untitled3/constants.dart';
-import 'package:untitled3/medicine_type.dart';
+import 'package:medi_reminder/constants.dart';
+import 'package:medi_reminder/medicine_type.dart';
 import 'package:sizer/sizer.dart';
-import 'package:untitled3/convert_time.dart';
+import 'package:medi_reminder/convert_time.dart';
 
 class NewEntryPage extends StatefulWidget {
   const NewEntryPage({super.key});
@@ -141,7 +141,7 @@ class _NewEntryPageState extends State<NewEntryPage> {
                 ),
                 child: Center(
                   child: SizedBox(
-                    width: 30.w,
+                    width: 50.w,
                     height: 10.h,
                     child: TextButton(
                       style: TextButton.styleFrom(

@@ -3,10 +3,13 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled3/login_page.dart';
 import 'home_page.dart';
 import 'log_in_or_register_page.dart';
 class AuthentPage extends StatelessWidget {
+  User? getCurrentUser(){
+    return FirebaseAuth.instance.currentUser;
+  }
+
   const AuthentPage({super.key});
 
   @override
@@ -20,7 +23,7 @@ class AuthentPage extends StatelessWidget {
                 return HomePage();
               }
               else{
-                return LoginOrRegisterPage();
+                return const LoginOrRegisterPage();
               }
 
             //user not logged in

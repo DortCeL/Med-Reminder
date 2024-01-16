@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled3/constants.dart';
 //import 'package:pageinfo1/pages/new_entry/new_entry_page.dart';
 import 'package:sizer/sizer.dart';
 
