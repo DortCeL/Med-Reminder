@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled3/login_page.dart';
-import 'login_page.dart';
+import 'package:medi_reminder/login_page.dart';
 import 'register_page.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {

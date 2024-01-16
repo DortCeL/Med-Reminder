@@ -1,10 +1,9 @@
 //import 'dart:js';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled3/components/sign_in_button.dart';
-import 'package:untitled3/components/text_field.dart';
+import 'package:medi_reminder/components/sign_in_button.dart';
+import 'package:medi_reminder/components/text_field.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -16,7 +15,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-    //text editing controllers
+  //instances of auth and firestore
+  final FirebaseFirestore _firestore=FirebaseFirestore.instance;
+  //get current user
+  User? getCurrentUser(){
+  return FirebaseAuth.instance.currentUser;
+  }
+  //text editing controllers
   final email=TextEditingController();
 
   final password=TextEditingController();
@@ -42,6 +47,20 @@ class _LoginPageState extends State<LoginPage> {
           email: email.text,
           password: password.text,
         );
+        //saving user info in a separate doc
+        // Get the current user
+        User? user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          // Create a document reference for the user in the "Users" collection
+          DocumentReference userDocRef = _firestore.collection("Users").doc(user.uid);
+
+          // Set the user information in the document
+          await userDocRef.set({
+            'email': user.email,
+            'uid':user.uid,
+            // Add more fields as needed
+          });
+        }
         // pop the loading circle
         Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
@@ -76,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

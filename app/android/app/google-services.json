@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "521897899852",
-    "project_id": "medireminderauthentication",
-    "storage_bucket": "medireminderauthentication.appspot.com"
+    "project_number": "110067684030",
+    "project_id": "med-reminder-499a4",
+    "storage_bucket": "med-reminder-499a4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:521897899852:android:7c2b9744361150f75301e9",
+        "mobilesdk_app_id": "1:110067684030:android:0fcf6f7b49eb6cd1ddc4ef",
         "android_client_info": {
-          "package_name": "com.example.untitled3"
+          "package_name": "com.example.medi_reminder"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDeKqRcCoaRIg3aQOBVdBkRmLWOq_ustUE"
+          "current_key": "AIzaSyD3LnhByLSItmIaoHzotbCOmt6BwJ5vIjg"
         }
       ],
       "services": {

@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:medi_reminder/components/my_drawer.dart';
 import 'package:sizer/sizer.dart';
-import 'package:untitled3/constants.dart';
-import 'package:untitled3/new_entry_page.dart';
+import 'package:medi_reminder/constants.dart';
+import 'package:medi_reminder/new_entry_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -21,22 +22,18 @@ class HomePage extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return Scaffold(
           appBar: AppBar(
-            actions: [
-              IconButton(
-                onPressed: signUserOut,
-                icon: Icon(Icons.logout),
-              ),
-            ],
+
             title: Center(
               child: Text(
-                "Logged in as: " + (user?.email ?? ""),
-                style: TextStyle(fontSize: 20),
+                "Logged in as: ${user.email ?? ""}",
+                style: const TextStyle(fontSize: 20),
               ),
             ),
           ),
+          drawer: MyDrawer(),
           body: Padding(
             padding: EdgeInsets.all(2.w), // h cng
-            child: Column(
+            child: const Column(
               children: [
                 TopContainer(),
                 // Use Spacer instead of SizedBox
@@ -95,10 +92,16 @@ class TopContainer extends StatelessWidget {
           padding: EdgeInsets.only(
             bottom: 1.h, // h cng
           ),
-          child: Text(
-            'Worry less.\nLive Healthier.',
+          child: const Text(
+            'Worry less\nLive Healthier.',
             textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.headlineLarge,
+            style:TextStyle(
+              color: Colors.deepPurple,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+
+
 
           ),
         ),
@@ -131,7 +134,7 @@ class BottomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.only(bottom: 50.0),
+        padding: const EdgeInsets.only(bottom: 50.0),
         // Adjust the bottom padding as needed
         child: Text(
           'No Medicine?\nClick the green button below',
